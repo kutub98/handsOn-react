@@ -1,6 +1,6 @@
 const TodoCard = () => {
   return (
-    <div>
+    <div className="border bg-white rounded">
       <h1>Todo Card</h1>
     </div>
   );
