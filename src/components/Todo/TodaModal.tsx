@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { addTodo } from '@/Redux/Features/TodoSlice';
+import { addTodo, TTodo } from '@/Redux/Features/TodoSlice';
 import { useAppDispatch } from '@/Redux/hooks';
 import { FormEvent, useState } from 'react';
 
@@ -21,9 +21,12 @@ export function TodoModal() {
   const dispatch = useAppDispatch();
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const taskDetails = {
+    const id = Math.random().toString(36).substring(2, 10);
+    const taskDetails: TTodo = {
+      id: id,
       title: task,
       description: description,
+      isCompleted: true,
     };
     dispatch(addTodo(taskDetails));
   };
